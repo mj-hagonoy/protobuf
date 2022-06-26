@@ -1,0 +1,19 @@
+syntax="proto3";
+package finance;
+
+import "google/protobuf/timestamp.proto";
+
+message Transaction {
+    string id = 1;
+    google.protobuf.Timestamp date_created = 2;
+
+    enum TransactionType{
+        Debit = 0;
+        Credit = 1;
+    }
+
+    TransactionType type = 3;
+    double amount = 4;
+    double begin_balance = 5;
+    double end_balance = 6;
+}

@@ -1,0 +1,23 @@
+syntax="proto3";
+package finance;
+
+import "google/protobuf/timestamp.proto";
+import "finance/transaction.proto";
+
+message Ledger {
+    string id = 1; 
+    string owner_id = 2;
+    double available_balance = 3;
+    double current_balance = 4;
+
+    enum LedgerType {
+        SAVINGS = 0;
+        CHECKING = 1;
+    }
+
+    LedgerType type = 5;
+    google.protobuf.Timestamp date_created = 6;
+    google.protobuf.Timestamp date_updated = 7;
+
+    repeated finance.Transaction transactions = 8;
+}
